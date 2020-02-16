@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import { FETCH_DRILLHOLES, FETCH_DRILLHOLE } from '../actions/types';
 
 export default function(state = [], action) {

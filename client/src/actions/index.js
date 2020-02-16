@@ -13,5 +13,4 @@ export const fetchDrillHole = (id) => async dispatch => {
 	const res = await axios.get('/api/drillholes/' + id);
 	
 	dispatch({ type: FETCH_DRILLHOLE, payload: res.data });
-	console.log(res.data);
 };

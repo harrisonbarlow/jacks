@@ -71,12 +71,12 @@ class DrillHole extends Component {
 				if((index < 5) || this.reliableAzimith(data.azimuth, prev) || this.reliableDip(data.dip)) {
 					prev = data.azimuth;
 					return(
-					    <DrillHoleRow index={index} depth={data.depth} dip={data.dip} azimuth={data.azimuth} reliable={true} />
+					    <DrillHoleRow key={index} depth={data.depth} dip={data.dip} azimuth={data.azimuth} reliable={true} />
 					);
 				} else {
 					prev = data.azimuth;
 					return(
-						<DrillHoleRow index={index} depth={data.depth} dip={data.dip} azimuth={data.azimuth} reliable={false} />
+						<DrillHoleRow key={index} depth={data.depth} dip={data.dip} azimuth={data.azimuth} reliable={false} />
 					);
 				}
 			});
@@ -85,25 +85,26 @@ class DrillHole extends Component {
 
 	render() {
 		const title = "Showing drilling data.";
-		console.log(this.props);
 		return(
 			<div>
 				<PageTitle title={title} />
 				{this.renderPosition()}
-				<table className="table table-striped">
-				  <thead className="thead-dark">
-				    <tr>
-				      <th scope="col">Depth</th>
-				      <th scope="col">Dip</th>
-				      <th scope="col">Azimuth</th>
-				      <th scope="col">Reliable?</th>
-				      <th scope="col">Over Ride</th>
-				    </tr>
-				  </thead>
-				  <tbody>
-				  	{this.renderData()}
-				  </tbody>
-				</table>
+				<div className="table-responsive">
+					<table className="table table-striped">
+					  <thead className="thead-dark">
+					    <tr>
+					      <th scope="col">Depth</th>
+					      <th scope="col">Dip</th>
+					      <th scope="col">Azimuth</th>
+					      <th scope="col">Reliable?</th>
+					      <th scope="col">Over Ride</th>
+					    </tr>
+					  </thead>
+					  <tbody>
+					  	{this.renderData()}
+					  </tbody>
+					</table>
+				</div>
 			</div>
 		);
 	}

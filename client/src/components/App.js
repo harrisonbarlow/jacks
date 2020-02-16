@@ -2,7 +2,6 @@ import React from 'react';
 import { BrowserRouter, Route} from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
-import logo from '../images/logo.svg';
 import Header from './Header';
 import Home from './Home';
 import DrillHoleList from './DrillHoleList';

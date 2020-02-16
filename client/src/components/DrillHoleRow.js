@@ -15,13 +15,13 @@ class DrillHoleRow extends Component {
 
 	render() {
 		return(
-			<tr key={this.props.index}>
+			<tr>
 		      <td>{this.props.depth}</td>
 		      <td>{this.props.dip}</td>
 		      <td>{this.props.azimuth}</td>
 		      {this.state.isReliable ? <td className="table-success">Y</td> : <td className="table-danger">N</td>}
 			  <td>
-			  	<button className="btn btn-primary" onClick={this.toggleReliable} role="button">Override</button>
+			  	<div className="btn btn-primary" onClick={this.toggleReliable} role="button">Override</div>
 			  </td>
 		    </tr>
 		);

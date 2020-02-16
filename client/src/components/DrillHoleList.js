@@ -39,21 +39,23 @@ class DrillHoleList extends Component {
 		return(
 			<div className="table-drillhole">
 				<PageTitle title={title} />
-				<table className="table table-striped">
-				  <thead className="thead-dark">
-				    <tr>
-				      <th scope="col">Collar</th>
-				      <th scope="col">Latitude</th>
-				      <th scope="col">Longitude</th>
-				      <th scope="col">Dip</th>
-				      <th scope="col">Azimuth</th>
-				      <th scope="col"></th>
-				    </tr>
-				  </thead>
-				  <tbody>
-				    {this.renderDrillHoles()}
-				  </tbody>
-				</table>
+				<div className="table-responsive">
+					<table className="table table-striped">
+					  <thead className="thead-dark">
+					    <tr>
+					      <th scope="col">Collar</th>
+					      <th scope="col">Latitude</th>
+					      <th scope="col">Longitude</th>
+					      <th scope="col">Dip</th>
+					      <th scope="col">Azimuth</th>
+					      <th scope="col"></th>
+					    </tr>
+					  </thead>
+					  <tbody>
+					    {this.renderDrillHoles()}
+					  </tbody>
+					</table>
+				</div>
 			</div>
 		);
 	}
