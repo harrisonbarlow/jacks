@@ -89,6 +89,9 @@ main h1 {
   main h1 {
     font-size: 2rem;
   }
+  .home {
+      padding: 230px 0;
+  }
   .drillhole-info .list-group {
     flex-direction: column;
   }
