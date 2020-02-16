@@ -21,7 +21,7 @@ app.get('/api/drillholes/:id', (req, res) => {
   });
 });
 
-if(process.enc.NODE_ENV == 'production') {
+if(process.env.NODE_ENV == 'production') {
 	app.use(express.static('client/build'));
 
 	const path = require('path');
