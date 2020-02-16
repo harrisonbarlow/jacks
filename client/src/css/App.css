@@ -1,13 +1,60 @@
+main h1 {
+	text-align: center;
+}
+
+.home {
+  text-align: center;
+  background-image: url(../images/hero.jpg);
+  background-size: cover;
+  background-position: center center;
+  padding: 300px 0;
+  color: white;
+  position: relative;
+}
+.home:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(0,0,0,0.5);
+}
+.container-home {
+  position: relative;
+  z-index: 1;
+}
+
 .navbar-brand img {
   max-width: 200px;
 }
 
-main {
-	padding-top: 5rem;
+.container-table {
+  padding-top: 5rem;
 }
 
-h1 {
-	text-align: center;
+.drillhole-info {
+  margin-bottom: 1rem;
+}
+
+.drillhole-info .list-group {
+  flex-direction: row;
+}
+
+.drillhole-info li.list-group-item {
+  flex: 1;
+}
+
+.drillhole-info .list-group-item+.list-group-item {
+  border-top-width: 1px;
+}
+
+.drillhole-info .btn {
+  padding: 0;
+}
+
+.drillhole-info p {
+  margin-bottom: 0;
 }
 
 .lds-dual-ring {
@@ -16,6 +63,7 @@ h1 {
   height: 80px;
   margin: 0 auto;
 }
+
 .lds-dual-ring:after {
   content: " ";
   display: block;
@@ -27,6 +75,7 @@ h1 {
   border-color: #0033a3 transparent #0033a3 transparent;
   animation: lds-dual-ring 1.2s linear infinite;
 }
+
 @keyframes lds-dual-ring {
   0% {
     transform: rotate(0deg);
@@ -36,6 +85,14 @@ h1 {
   }
 }
 
-.drillhole-info {
-  margin-bottom: 1rem;
+@media only screen and (max-width: 992px) {
+  main h1 {
+    font-size: 2rem;
+  }
+  .drillhole-info .list-group {
+    flex-direction: column;
+  }
+  .drillhole-info .list-group-item+.list-group-item {
+    border-top-width: 0px;
+  }
 }

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchDrillHole } from '../actions';
-//import { Link } from 'react-router-dom';
+import { fetchDrillHole, viewDrillHole } from '../actions';
 import DrillHoleRow from './DrillHoleRow';
+import DrillHoleInfo from './DrillHoleInfo';
 import Spinner from './Spinner';
 import PageTitle from './PageTitle';
 const AZIMUTH_TOLERANCE = 5;
@@ -18,7 +18,7 @@ class DrillHole extends Component {
 		this.props.fetchDrillHole(this.props.match.params.id);
 	}
 
-	reliableAzimith(current, previous) {
+	reliableAzimuth(current, previous) {
 		return ((current - previous) <= AZIMUTH_TOLERANCE) ? true : false;
 	}
 
@@ -27,6 +27,7 @@ class DrillHole extends Component {
 	}
 
 	averageOfPrevious(data, index) {
+		if(index < 5) return data[index].dip;
 		var sum = 0;
 		for(var i = index - 5; i < index; i++) {
 			sum += data[i].dip;
@@ -37,21 +38,7 @@ class DrillHole extends Component {
 	renderPosition() {
 		return this.props.drillholes.map(drillhole => {
 			return (
-				<div className="drillhole-info" key={drillhole.latitude}>
-					<ul className="list-group">
-					  <li className="list-group-item">
-					  	<strong>Latitude:</strong> {drillhole.latitude}
-					  </li>
-					  <li className="list-group-item">
-					  	<strong>Longitude:</strong> {drillhole.longitude}
-					  </li>
-					  <li className="list-group-item">
-					  	<a href={`https://www.google.com/maps/?q=${drillhole.latitude},${drillhole.longitude}`} className="btn btn-link">
-							Open In Google Maps
-	    				</a>
-					  </li>
-					</ul>
-				</div>
+				<DrillHoleInfo latitude={drillhole.latitude} longitude={drillhole.longitude} />
 			);
 		});
 	}
@@ -59,16 +46,18 @@ class DrillHole extends Component {
 	renderData() {
 		if(!this.props.drillholes.length) {
 			return(
-				<Spinner />
+				<tr>
+					<td colSpan="6">
+						<Spinner />
+					</td>
+				</tr>
 			);
 		}
 		return this.props.drillholes.map(drillhole => {
+			var prev = drillhole.data[0].azimuth;
 			return drillhole.data.map((data, index) => {
-				var prev = 0;
-				if(index >= 5) {
-					this.average = this.averageOfPrevious(drillhole.data, index);
-				}
-				if((index < 5) || this.reliableAzimith(data.azimuth, prev) || this.reliableDip(data.dip)) {
+				this.average = this.averageOfPrevious(drillhole.data, index);
+				if(this.reliableAzimuth(data.azimuth, prev) && this.reliableDip(data.dip)) {
 					prev = data.azimuth;
 					return(
 					    <DrillHoleRow key={index} depth={data.depth} dip={data.dip} azimuth={data.azimuth} reliable={true} />
@@ -84,7 +73,7 @@ class DrillHole extends Component {
 	}
 
 	render() {
-		const title = "Showing drilling data.";
+		const title = "Displaying drilling data.";
 		return(
 			<div>
 				<PageTitle title={title} />
@@ -97,7 +86,7 @@ class DrillHole extends Component {
 					      <th scope="col">Dip</th>
 					      <th scope="col">Azimuth</th>
 					      <th scope="col">Reliable?</th>
-					      <th scope="col">Over Ride</th>
+					      <th scope="col">Override</th>
 					    </tr>
 					  </thead>
 					  <tbody>
@@ -113,4 +102,4 @@ function mapStateToProps({drillholes}) {
 	return { drillholes };
 }
 
-export default connect(mapStateToProps, { fetchDrillHole })(DrillHole);
+export default connect(mapStateToProps, { fetchDrillHole, viewDrillHole })(DrillHole);

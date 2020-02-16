@@ -17,12 +17,14 @@ function App() {
           <div>
             <Header />
             <main>
-              <div className="container">
-                <div className="row">
-                  <div className="col-md-12">
-                    <Route exact path="/" component={Home} />
-                    <Route exact path="/drillholes" component={DrillHoleList} />
-                    <Route exact path="/drillholes/:id" component={DrillHole} />
+              <Route exact path="/" component={Home} />
+              <div className="container-table">
+                <div className="container">
+                  <div className="row">
+                    <div className="col-md-12">
+                      <Route exact path="/drillholes" component={DrillHoleList} />
+                      <Route exact path="/drillholes/:id" component={DrillHole} />
+                    </div>
                   </div>
                 </div>
               </div>

@@ -1,15 +1,13 @@
 import React, { Component } from 'react';
 
-class Home extends Component {
+class PageTitle extends Component {
 	render() {
 		return(
-			<div>
-				<div className="table-title">
-					<h1>{this.props.title}</h1>
-				</div>
+			<div className="table-title">
+				<h1>{this.props.title}</h1>
 			</div>
 		);
 	}
 }
 
-export default Home;
+export default PageTitle;

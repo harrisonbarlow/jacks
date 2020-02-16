@@ -4,11 +4,7 @@ class Spinner extends Component {
 
 	render() {
 		return(
-			<tr>
-				<td colSpan="6">
-					<div className="lds-dual-ring"></div>
-				</td>
-			</tr>
+			<div className="lds-dual-ring"></div>
 		);
 	}
 }

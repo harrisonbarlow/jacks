@@ -1,19 +1,31 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { fetchDrillHoles } from '../actions';
+import { fetchDrillHoles, viewDrillHole } from '../actions';
 import Spinner from './Spinner';
 import PageTitle from './PageTitle';
 
 class DrillHoleList extends Component {
+	constructor(props) {
+		super(props);
+		this.viewDrillHole = this.viewDrillHole.bind(this);
+	}
 	componentDidMount() {
 		this.props.fetchDrillHoles();
+	}
+
+	viewDrillHole(id) {
+		this.props.viewDrillHole(id);
 	}
 
 	renderDrillHoles() {
 		if(!this.props.drillholes.length) {
 			return(
-				<Spinner />
+				<tr>
+					<td colSpan="6">
+						<Spinner />
+					</td>
+				</tr>
 			);
 		}
 		return this.props.drillholes.map(drillhole => {
@@ -25,7 +37,7 @@ class DrillHoleList extends Component {
 			      <td>{drillhole.dip}°</td>
 			      <td>{drillhole.azimuth}°</td>
 			      <td>
-			      	<Link to={`/drillholes/${drillhole.id}`} className="btn btn-link">
+			      	<Link to={`/drillholes/${drillhole.id}`} className="btn btn-link" onClick={() => { this.viewDrillHole(drillhole.id)}}>
 						View
     				</Link>
 			      </td>
@@ -64,4 +76,4 @@ function mapStateToProps({drillholes}) {
 	return { drillholes };
 }
 
-export default connect(mapStateToProps, { fetchDrillHoles })(DrillHoleList);
+export default connect(mapStateToProps, { fetchDrillHoles, viewDrillHole })(DrillHoleList);

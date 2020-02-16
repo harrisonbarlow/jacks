@@ -19,7 +19,7 @@ class DrillHoleRow extends Component {
 		      <td>{this.props.depth}</td>
 		      <td>{this.props.dip}</td>
 		      <td>{this.props.azimuth}</td>
-		      {this.state.isReliable ? <td className="table-success">Y</td> : <td className="table-danger">N</td>}
+		      {this.state.isReliable ? <td className="table-success">Yes</td> : <td className="table-danger">No</td>}
 			  <td>
 			  	<div className="btn btn-primary" onClick={this.toggleReliable} role="button">Override</div>
 			  </td>
