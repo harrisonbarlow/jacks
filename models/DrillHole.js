@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
-const data = require('./data');
+const data = require('./Data');
 
 const drillHoleSchema = new Schema({
 	id: Number,
