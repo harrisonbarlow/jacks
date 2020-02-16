@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { fetchDrillHoles } from '../actions';
+import Spinner from './Spinner';
+import PageTitle from './PageTitle';
 
 class DrillHoleList extends Component {
 	componentDidMount() {
@@ -9,6 +11,11 @@ class DrillHoleList extends Component {
 	}
 
 	renderDrillHoles() {
+		if(!this.props.drillholes.length) {
+			return(
+				<Spinner />
+			);
+		}
 		return this.props.drillholes.map(drillhole => {
 			return(
 				<tr key={drillhole.id}>
@@ -28,11 +35,10 @@ class DrillHoleList extends Component {
 	}
 
 	render() {
+		const title = "Select a collar from the list below.";
 		return(
-			<div>
-				<div className="table-title">
-					<h1>Select a collar from the list below.</h1>
-				</div>
+			<div className="table-drillhole">
+				<PageTitle title={title} />
 				<table className="table table-striped">
 				  <thead className="thead-dark">
 				    <tr>
