@@ -33,27 +33,27 @@ main h1 {
   padding-top: 5rem;
 }
 
-.drillhole-info {
+.drillhole-position {
   margin-bottom: 1rem;
 }
 
-.drillhole-info .list-group {
+.drillhole-position .list-group {
   flex-direction: row;
 }
 
-.drillhole-info li.list-group-item {
+.drillhole-position li.list-group-item {
   flex: 1;
 }
 
-.drillhole-info .list-group-item+.list-group-item {
+.drillhole-position .list-group-item+.list-group-item {
   border-top-width: 1px;
 }
 
-.drillhole-info .btn {
+.drillhole-position .btn {
   padding: 0;
 }
 
-.drillhole-info p {
+.drillhole-position p {
   margin-bottom: 0;
 }
 
@@ -92,10 +92,10 @@ main h1 {
   .home {
       padding: 230px 0;
   }
-  .drillhole-info .list-group {
+  .drillhole-position .list-group {
     flex-direction: column;
   }
-  .drillhole-info .list-group-item+.list-group-item {
+  .drillhole-position .list-group-item+.list-group-item {
     border-top-width: 0px;
   }
 }

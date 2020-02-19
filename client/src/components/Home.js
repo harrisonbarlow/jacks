@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PageTitle from './PageTitle';
-import hero from '../images/hero.jpg';
 
 class Home extends Component {
 	render() {
